@@ -20239,8 +20239,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!136 &7391973090432915184
-CapsuleCollider:
+--- !u!65 &7391973090432915184
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -20249,10 +20249,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.04734949
-  m_Height: 0.1787076
-  m_Direction: 1
-  m_Center: {x: 0.011693144, y: -0.013807178, z: 0.17945182}
+  serializedVersion: 2
+  m_Size: {x: 0.05810035, y: 0.069650665, z: 0.09495674}
+  m_Center: {x: -0.011424474, y: -0.0017772801, z: 0.00351679}
 --- !u!114 &7391973090432915185
 MonoBehaviour:
   m_ObjectHideFlags: 0

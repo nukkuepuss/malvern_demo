@@ -31,7 +31,7 @@ namespace com.jonrummery.edison {
         // clipboard ticks
         public GameObject tick1, tick2, tick3, tick4, tick5, tick6, tick7, tick8, tick9, tick10;
 
-        public Material on, off;
+        public Texture2D rectangularButtonOn, rectangularButtonOff;
 
         public GameObject rectangularButton;
 
@@ -61,7 +61,7 @@ namespace com.jonrummery.edison {
 
             _mats = rectangularButton.GetComponent<MeshRenderer>().materials;
 
-            _mats[0] = off;
+            _mats[0].SetTexture("_MainTex", rectangularButtonOff);
 
 
             clip2.SetActive(false);
@@ -70,7 +70,7 @@ namespace com.jonrummery.edison {
             clip3.SetActive(false);
             clip3GreenArrow.SetActive(false);
 
-            moveScript.isInBalloonTutorial = true;
+            moveScript.inTutorial = true;
         }
 
         private void Update() {
@@ -205,7 +205,7 @@ namespace com.jonrummery.edison {
             //OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.LTouch);
 
             // unfreeze Player
-            moveScript.isInBalloonTutorial = false;
+            moveScript.inTutorial = false;
         }
 
         // called from the green progress arrow trigger unlocked when Player has successfully performed a burn
@@ -243,12 +243,14 @@ namespace com.jonrummery.edison {
             if (tick3.activeSelf) {
 
                 tick3.SetActive(false);
-                _mats[0] = off;
+                _mats[0].SetTexture("_MainTex", rectangularButtonOff);
+                //_mats[0] = buttonMaterialOff;
             }
             else {
 
                 tick3.SetActive(true);
-                _mats[0] = on;
+                _mats[0].SetTexture("_MainTex", rectangularButtonOn);
+                //_mats[0] = buttonMaterialOn;
             }
         }
 

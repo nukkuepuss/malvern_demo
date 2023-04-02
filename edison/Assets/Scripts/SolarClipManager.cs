@@ -38,15 +38,7 @@ namespace com.jonrummery.edison {
 
             sunRotation = sun.GetComponent<Transform>().rotation;
 
-            if (sunRotation.x < 0) {
-
-                KWh = 0;
-            }
-            else {
-
-                KWh = Mathf.Abs(sunRotation.x * sunRotation.y) * 100;
-            }
-
+            KWh = (sunRotation.x * 100);
 
             if (stage4.activeSelf) {
 
@@ -59,10 +51,6 @@ namespace com.jonrummery.edison {
             else if (stage2.activeSelf) {
 
                 KWh = KWh * 2;
-            }
-            else if (!stage1.activeSelf) {
-
-                KWh = 0;
             }
 
             display.text = (Mathf.Abs(KWh)).ToString("0.00") + "KWh";

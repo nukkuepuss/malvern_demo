@@ -15,6 +15,7 @@ namespace com.jonrummery.edison {
     public class MovePlayer : MonoBehaviour {
 
         private GameObject _cam;
+        //public GameObject tracking;
 
         [Tooltip("Lower the value for movement along stick y-axis to register when close to x-axis")]
         [Range(0, 1)]
@@ -36,8 +37,7 @@ namespace com.jonrummery.edison {
         public float supermanSpeed;
         //public float godSpeed;
 
-        [HideInInspector]
-        public bool isInBalloonTutorial = true;
+        public bool inTutorial;
 
         //[HideInInspector]
         //public bool isInControlsTutorial = false;
@@ -78,19 +78,19 @@ namespace com.jonrummery.edison {
             // _offset = GameObject.FindGameObjectWithTag("MainCamera").transform;
         }
 
-        void LateUpdate() {
+        void Update() {
 
             // check if tutorial has been completed : no moving beforehand
-           // if (!isInBalloonTutorial) {
+            if (!inTutorial) {
 
                 GetOVRInput();
 
                 // don't do anything if either action button is pressed
-                if (!_actionButton1 && !_actionButton2) {
+                if (!_actionButton1 || !_actionButton2) {
 
                     ProcessOVRInput();
                 }
-           // }
+            }
 
             // experimental offset for turning on-the-spot
             // transform.position = _offset.transform.position;

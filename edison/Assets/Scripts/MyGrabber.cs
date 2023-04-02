@@ -1,5 +1,5 @@
 ﻿/// <summary>
-/// pick up and drop fan object
+/// pick up and drop an object
 /// local only (for now)
 /// </summary>
 
@@ -22,6 +22,8 @@ namespace com.jonrummery.edison {
 
         private bool _isOtherHandGrabbing, _isHoldingTrigger;
         private GameObject _tempObject, _grabbedObject;
+
+        private GameObject parent;
 
         void OnDrawGizmosSelected() {
 
@@ -67,6 +69,9 @@ namespace com.jonrummery.edison {
             // get a reference to the object that's being grabbed
             _grabbedObject = _sentObject;
 
+            // remember the parent of the object
+            parent = _grabbedObject.transform.parent.gameObject;
+
             // change the object to kinematic (no physics whilst grabbing)
             _grabbedObject.GetComponent<Rigidbody>().isKinematic = true;
 
@@ -81,20 +86,13 @@ namespace com.jonrummery.edison {
                 // set a flag
                 _isGrabbing = false;
 
-                // remove hand as parent so that it can move freely
-                _grabbedObject.transform.parent = null;
-
-                // reference the rigidbody of the object
-                //Rigidbody _grabbedObjectsRigidbody = _grabbedObject.GetComponent<Rigidbody>();
+                // parent to original object
+                _grabbedObject.transform.parent = parent.transform;
 
                 // restore physics
                 _grabbedObject.GetComponent<Rigidbody>().isKinematic = false;
-                //_grabbedObjectsRigidbody.isKinematic = false;
 
                 // give it some momentum based on the hand's movement
-
-                //_grabbedObjectsRigidbody.AddForce(transform.forward * OVRInput.GetLocalControllerVelocity(controller));
-
                 _grabbedObject.GetComponent<Rigidbody>().velocity = (trackingSpace.rotation * OVRInput.GetLocalControllerVelocity(controller));
 
                 // give it some rotation based on the hand's rotation
