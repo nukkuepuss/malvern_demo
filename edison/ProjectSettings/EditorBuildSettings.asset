@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/newLobby.unity
     guid: 0a14ed91123b4d14bb5789facec4bd49
   - enabled: 1
-    path: Assets/Scenes/malverndemo.unity
-    guid: 211592140b4278b4caa6376675f2467f
+    path: Assets/Scenes/mayday.unity
+    guid: aeeb2d717a168ed40a6f379c2160d553
   - enabled: 1
     path: Assets/Scenes/sixer.unity
     guid: 7c02aff3ca7901942b92a6dd43e5b081
