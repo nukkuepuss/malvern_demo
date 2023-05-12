@@ -1,4 +1,5 @@
 ﻿/// <summary>
+/// MyGrabber.cs
 /// pick up and drop an object
 /// local only (for now)
 /// </summary>
@@ -34,27 +35,32 @@ namespace com.jonrummery.edison {
 
         private void Update() {
 
-            // return the nearest pickupable object (or null)
-            _tempObject = WhatsNearest();
-
-            // check to see if we're already in a grab state with the other hand
-            _isOtherHandGrabbing = otherHand._isGrabbing;
-
             // check to see if this hand's grab button is held down
             _isHoldingTrigger = OVRInput.Get(triggerGrab);
 
-            // if we're NOT (other hand's grabbing + this trigger held down + both hands want the same object)
-            if (!(_isOtherHandGrabbing && _isHoldingTrigger && _tempObject == otherHand._grabbedObject)) {
+            if (_isHoldingTrigger) {
 
-                // GRABBING
-                // (i) not already in a grab state, (ii) an object is in range and (iii) we're holding the grab trigger
-                if (!_isGrabbing && _tempObject != null && _isHoldingTrigger) {
+                // return the nearest pickupable object (or null)
+                _tempObject = WhatsNearest();
 
-                    GrabObject(_tempObject);
+                // check to see if we're already in a grab state with the other hand
+                _isOtherHandGrabbing = otherHand._isGrabbing;
+
+                // if we're NOT (other hand's grabbing + this trigger held down + both hands want the same object)
+                if (!(_isOtherHandGrabbing && _isHoldingTrigger && _tempObject == otherHand._grabbedObject)) {
+
+                    // GRABBING
+                    // (i) not already in a grab state, (ii) an object is in range and (iii) we're holding the grab trigger
+                    if (!_isGrabbing && _tempObject != null && _isHoldingTrigger) {
+
+                        GrabObject(_tempObject);
+                    }
                 }
+            }
+            else {
 
-                // drop if we're grabbing and not holding down the grab trigger
-                if (_isGrabbing && !_isHoldingTrigger) {
+                // we're not holding down the grab trigger, so drop if we're grabbing
+                if (_isGrabbing) {
 
                     DropObject();
                 }

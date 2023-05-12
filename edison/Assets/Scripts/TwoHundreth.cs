@@ -1,6 +1,7 @@
 ﻿/// <summary>
-/// Creates Exhibition2 by showing a 200th miniature of major features
-/// mirror the state of the main models
+/// TwoHundreth.cs
+/// Creates Exhibition2 by showing 200th miniatures
+/// which mirror the state of the main models
 /// </summary>
 
 using System.Collections;
