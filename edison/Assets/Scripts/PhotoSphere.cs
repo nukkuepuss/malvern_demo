@@ -1,4 +1,5 @@
 ﻿/// <summary>
+/// PhotoShphere.cs
 /// show a 360 photosphere with Button3 when in a collider
 /// metadata server for bracer information text
 /// </summary>

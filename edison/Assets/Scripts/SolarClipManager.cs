@@ -1,4 +1,5 @@
 ﻿/// <summary>
+/// SolarClipManager.cs
 /// handles the solar clipboard triggers and events
 /// </summary>
 

@@ -1,6 +1,6 @@
 ﻿/// <summary>
+/// MovePlayer.cs
 /// query OVRInput to move, rotate
-/// smooth-out sudden jerks. Nobody likes a sudden jerk.
 /// TODO : map oculus controller, properly exposed
 /// //TODO : turn on the spot (experimental offset code) <== seems to have resolved for Quest2, not Rift... different trackers..?
 /// TODO expose variables on Settings clipboard

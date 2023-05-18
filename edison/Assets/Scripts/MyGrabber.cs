@@ -1,6 +1,7 @@
 ﻿/// <summary>
 /// MyGrabber.cs
 /// pick up and drop an object
+/// *** pickups must be on 'pickup' layer and have rb+collider
 /// local only (for now)
 /// </summary>
 
