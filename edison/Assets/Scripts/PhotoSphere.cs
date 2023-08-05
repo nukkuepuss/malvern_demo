@@ -23,7 +23,7 @@ namespace com.jonrummery.edison {
 
         private bool _isInPhotosphereCollider = false;
         private bool _isShowingPhotosphere = false;
-        private float _originalMoveSpeed;
+        private int _originalMoveSpeed;
         private Material _originalSkybox;
         private int _originalMask;
 
@@ -47,7 +47,7 @@ namespace com.jonrummery.edison {
             _originalSkybox = RenderSettings.skybox;
 
             // player is frozen in photomode and should continue moving on exit
-            _originalMoveSpeed = player.GetComponent<MovePlayer>().moveYSpeed;
+            _originalMoveSpeed = player.GetComponent<MovePlayer>().moveSpeed;
         }
 
         private void Update() {
@@ -59,7 +59,7 @@ namespace com.jonrummery.edison {
                 _isShowingPhotosphere = true;
 
                 // freeze player
-                player.GetComponent<MovePlayer>().moveYSpeed = 0f;
+                player.GetComponent<MovePlayer>().moveSpeed = 0;
 
                 // show the photo
                 ShowPhotosphere();
@@ -72,7 +72,7 @@ namespace com.jonrummery.edison {
                 StopShowingPhotosphere();
 
                 // unfreeze player
-                player.GetComponent<MovePlayer>().moveYSpeed = _originalMoveSpeed;
+                player.GetComponent<MovePlayer>().moveSpeed = _originalMoveSpeed;
             }
         }
 

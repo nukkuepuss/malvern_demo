@@ -1,0 +1,166 @@
+# Blender 3.6.0 MTL File: 'None'
+# www.blender.org
+
+newmtl M_Barrel
+Ns 10.000005
+Ka 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd T_Barrel_BaseColor.tif
+map_Ks T_Barrel_Specular.tif
+map_Bump T_Barrel_Bump.tif
+
+newmtl M_Crate
+Ns 10.000005
+Ka 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd T_Crate_Basecolor.tif
+map_Ks T_Crate_Specular.tif
+map_Bump T_Crate_Bump.tif
+
+newmtl M_Crossbow
+Ns 10.000005
+Ka 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd T_Crossbow_Basecolor.tif
+map_Ks T_Crossbow_Specular.tif
+
+newmtl M_Spear
+Ns 10.000005
+Ka 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd T_Spear_BaseColor.tif
+map_Ks T_Spear_Specular.tif
+
+newmtl M_WeaponRack
+Ns 10.000005
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd T_Rack_Basecolor.tif
+
+newmtl StairWoodPlanks.001
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd StairPlanks_D.png
+
+newmtl TowerHead.001
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd TowerHead_D.png
+
+newmtl Trees.003
+Ns 1000.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd ColorScheme.png
+
+newmtl WoodLogs01
+Ns 224.999985
+Ka 1.000000 1.000000 1.000000
+Kd 0.069868 0.015212 0.001155
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl WoodLogs01.001
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd WoodLogs01_D.png
+
+newmtl WoodPlanks01.001
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd OldWoodPlanksA.png
+
+newmtl elm_leaves
+Ns 405.344421
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+illum 1
+map_Kd elm leaf_d.png
+map_d elm leaf_d.png
+map_Bump -bm 1.000000 elm leaf_n.png
+
+newmtl elm_trunk
+Ns 270.399994
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd elm trunk_d.png
+map_Bump -bm 1.000000 elm trunk_n.png
+
+newmtl rastMat.001
+Ns 224.999985
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd GOOGLE_SAT_WM.tif
+
+newmtl wire_006134006.038
+Ns 32.000008
+Ka 1.000000 1.000000 1.000000
+Ks 0.350000 0.350000 0.350000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd Soil_Bump.jpg
+
+newmtl wire_006134006.039
+Ns 32.000008
+Ka 1.000000 1.000000 1.000000
+Kd 0.023500 0.525500 0.023500
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1

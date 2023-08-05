@@ -17,6 +17,8 @@ TagManager:
   - trigger
   - hideable
   - pickup
+  - clipboards
+  - wristband
   layers:
   - Default
   - TransparentFX

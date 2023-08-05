@@ -16,6 +16,7 @@ namespace com.jonrummery.edison {
 
         public GameObject buttonBody;
         public GameObject buttonPic;
+        public Material onPic, offPic;
 
         public float arrowSpeed;
         public float hapticDelay;
@@ -53,7 +54,7 @@ namespace com.jonrummery.edison {
                 stillThere = true;
 
                 //set the button 'on' state
-                //buttonPic.GetComponent<MeshRenderer>().material = onPic;
+                buttonPic.GetComponent<MeshRenderer>().material = onPic;
 
                 // reinforce button-press with haptics
                 StartCoroutine("Haptics");
@@ -74,14 +75,17 @@ namespace com.jonrummery.edison {
                 // set the flag
                 stillThere = false;
 
+                // halt the countdown
+                StopCoroutine("WaitABit");
+
                 // reset arrow
                 ResetArrow();
 
-                //// set the button 'on' state
-                //buttonPic.GetComponent<MeshRenderer>().material = onPic;
+                // set the button 'off' state
+                buttonPic.GetComponent<MeshRenderer>().material = offPic;
 
                 // stop the haptics
-                OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.LTouch);
+                OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.RTouch);
             }
         }
 
@@ -96,9 +100,6 @@ namespace com.jonrummery.edison {
                 // reset arrow
                 ResetArrow();
 
-                // hide all objects (Unity makes the Oculus display all janky when changing scenes)
-                //cam.cullingMask = (1 << LayerMask.NameToLayer("Nothing"));
-
                 // jump
                 player.transform.position = jumpLocation.transform.position;
                 player.transform.rotation = jumpLocation.transform.rotation;
@@ -111,7 +112,7 @@ namespace com.jonrummery.edison {
             stillThere = false;
 
             // set the button 'off' state
-            //buttonPic.GetComponent<MeshRenderer>().material = offPic;
+            buttonPic.GetComponent<MeshRenderer>().material = offPic;
 
             // reset the arrow rotation
             buttonBody.transform.rotation = new Quaternion(0, 0, 0, 0);
@@ -120,9 +121,9 @@ namespace com.jonrummery.edison {
         IEnumerator Haptics() {
 
             // set haptics on and off
-            OVRInput.SetControllerVibration(hapticFrequency, hapticAmplitude, OVRInput.Controller.LTouch);
+            OVRInput.SetControllerVibration(hapticFrequency, hapticAmplitude, OVRInput.Controller.RTouch);
             yield return new WaitForSeconds(hapticDelay);
-            OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.LTouch);
+            OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.RTouch);
         }
     }
 }

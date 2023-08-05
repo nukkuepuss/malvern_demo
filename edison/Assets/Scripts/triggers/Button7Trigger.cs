@@ -78,6 +78,9 @@ namespace com.jonrummery.edison {
                 // reset arrow
                 ResetArrow();
 
+                // halt the countdown
+                StopCoroutine("WaitABit");
+
                 //// set the button 'on' state
                 //buttonPic.GetComponent<MeshRenderer>().material = onPic;
 

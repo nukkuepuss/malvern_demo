@@ -2,7 +2,6 @@
 /// MovePlayer.cs
 /// query OVRInput to move, rotate
 /// TODO : map oculus controller, properly exposed
-/// //TODO : turn on the spot (experimental offset code) <== seems to have resolved for Quest2, not Rift... different trackers..?
 /// TODO expose variables on Settings clipboard
 /// </summary>
 
@@ -14,6 +13,7 @@ namespace com.jonrummery.edison {
 
     public class MovePlayer : MonoBehaviour {
 
+        public GameObject playerPivot;
         private GameObject _cam;
         //public GameObject tracking;
 
@@ -21,30 +21,28 @@ namespace com.jonrummery.edison {
         [Range(0, 1)]
         public float stickTolerance;
 
-        [Header("Forward / backward speed (right-stick up and down)")]
-        public float moveYSpeed;
+        [Header("Speed (right-stick up/down + left/right)")]
+        public int moveSpeed;
 
-        [Header("Strafe speed (right-stick left and right)")]
-        public float moveXSpeed;
+        //[Header("Strafe speed (right-stick left/right)")]
+        //public int moveXSpeed;
 
-        [Header("Rotation speed (left-stick left and right")]
-        public float rotationSpeed;
+        [Header("Rotation speed (left-stick left/right")]
+        public int rotationSpeed;
 
-        [Header("Index trigger boosts")]
-        [Range(0, 100)]
-        public float boostSpeed;
-        [Range(0, 100)]
-        public float supermanSpeed;
-        //public float godSpeed;
+        [Header("Index trigger boost")]
+        [Range(0, 10)]
+        public int boostSpeed;
 
         public bool inTutorial;
+
+        [HideInInspector]
+        public bool _isSliding;
 
         //[HideInInspector]
         //public bool isInControlsTutorial = false;
 
-        //private float _newMoveSpeed;
         private float _newYMoveSpeed;
-        //private float _newXMoveSpeed;
 
         private GameObject _rightHand;
 
@@ -54,6 +52,9 @@ namespace com.jonrummery.edison {
         public Vector2 _rightStickInput;
 
         private float _rotation;
+        private bool _isSnapping;
+        private float _snapLeftSpeed;
+        private float _snapRightSpeed;
 
         private Vector3 _movement;
 
@@ -61,6 +62,15 @@ namespace com.jonrummery.edison {
         public float _supermanTriggerInput;
         [HideInInspector]
         public float _boostTriggerInput;
+
+        [HideInInspector]
+        public enum movementStyles {
+            snap,
+            smooth
+        }
+
+        [HideInInspector]
+        public movementStyles movementChoice;
 
         private bool _actionButton1, _actionButton2;
 
@@ -74,14 +84,19 @@ namespace com.jonrummery.edison {
             // TODO expose string for left-handed users
             _rightHand = GameObject.FindGameObjectWithTag("RightHand");
 
-            // need to offset camera for rotation to be 'on-the-spot', so get a reference to the MainCamera (CentreEyeAnchor)
-            // _offset = GameObject.FindGameObjectWithTag("MainCamera").transform;
+            // set initial movement style
+            movementChoice = movementStyles.snap;
+
+            // set the snap values
+            _snapLeftSpeed = -rotationSpeed;
+            _snapRightSpeed = rotationSpeed;
+
         }
 
         void Update() {
 
             // check if tutorial has been completed : no moving beforehand
-            if (!inTutorial) {
+            if (!inTutorial && !_isSliding) {
 
                 GetOVRInput();
 
@@ -91,19 +106,7 @@ namespace com.jonrummery.edison {
                     ProcessOVRInput();
                 }
             }
-
-            // experimental offset for turning on-the-spot
-            // transform.position = _offset.transform.position;
-
-            // call refresh function from Oculus **required**
-            // OVRInput.Update();
         }
-
-        //public void TutorialFlag() {
-
-        //    // called from TutorialManager when the tutorial has completed
-        //    isInTutorial = false;
-        //}
 
         void GetOVRInput() {
 
@@ -122,15 +125,40 @@ namespace com.jonrummery.edison {
 
         void ProcessOVRInput() {
 
-            // ROTATION
-            // left stick x-axis for rotation, but only if the left-stick is moved tolerably AND special feature buttons 1 and 2 aren't held down
-            if (((_leftStickInput.x != 0) && (_leftStickInput.y < stickTolerance)) && !_actionButton1) {
+            // ROTATION - two types
+            if (movementChoice == movementStyles.smooth) {
 
+                // SMOOTH
+                // left stick x-axis for rotation, but only if the left-stick is moved tolerably AND special feature buttons 1 and 2 aren't held down
                 // smooth out the rotation
                 _rotation = (rotationSpeed * _leftStickInput.x * Time.deltaTime);
 
                 // rotate around the y-axis of player
-                transform.Rotate(0f, _rotation, 0f);
+                playerPivot.transform.Rotate(0f, _rotation, 0f, Space.Self);
+            }
+            else {
+
+                // SNAP
+                if (_leftStickInput.x == 0f) {
+
+                    _isSnapping = false;
+                }
+
+                if (!_isSnapping && (((_leftStickInput.x != 0) && (_leftStickInput.y < stickTolerance)) && !_actionButton1)) {
+
+                    _isSnapping = true;
+
+                    // moving the stick to the left requires a -ve y rotation value
+                    if (_leftStickInput.x < 0) {
+
+                        _rotation = _snapLeftSpeed;
+                    }
+                    else {
+                        _rotation = _snapRightSpeed;
+                    }
+
+                    playerPivot.transform.Rotate(0f, _rotation, 0f, Space.Self);
+                }
             }
 
             // STRAFE
@@ -138,8 +166,8 @@ namespace com.jonrummery.edison {
             if (_rightStickInput.x != 0 && _rightStickInput.y < stickTolerance) {
 
                 // laterally move relative to headset position
-                _movement = (_cam.transform.rotation * Vector3.right * moveXSpeed * _rightStickInput.x * Time.deltaTime);
-                transform.position += _movement;
+                _movement = (_cam.transform.rotation * Vector3.right * moveSpeed * _rightStickInput.x * Time.deltaTime);
+                playerPivot.transform.position += _movement;
             }
 
             // FORWARD/BACKWARD
@@ -147,26 +175,27 @@ namespace com.jonrummery.edison {
             if ((_rightStickInput.y != 0f) && (_rightStickInput.x < stickTolerance)) {
 
                 // Yeah! we're gonna do some moving!
-                _newYMoveSpeed = moveYSpeed;
+                _newYMoveSpeed = moveSpeed;
 
                 // is Boost Mode enabled?
                 if (_boostTriggerInput > 0.1f) {
-                    _newYMoveSpeed = (boostSpeed * _boostTriggerInput);
+                    _newYMoveSpeed += (boostSpeed * _boostTriggerInput);
                 }
 
                 // is Superman Mode enabled?
+                // NB this value has been deprecated : boost and superman speeds are the same
                 if (_supermanTriggerInput > 0.1f) {
-                    _newYMoveSpeed = (supermanSpeed * _supermanTriggerInput);
+                    _newYMoveSpeed += (boostSpeed * _supermanTriggerInput);
                 }
 
                 // is God Mode enabled?
                 if (_boostTriggerInput != 0f && _supermanTriggerInput != 0f) {
-                    _newYMoveSpeed = (supermanSpeed * boostSpeed * _boostTriggerInput);
+                    _newYMoveSpeed = (boostSpeed * boostSpeed * _boostTriggerInput);
                 }
 
                 // move forward/backward relative to right hand's position
                 _movement = (_rightHand.transform.forward * _newYMoveSpeed * _rightStickInput.y * Time.deltaTime);
-                transform.position += _movement;
+                playerPivot.transform.position += _movement;
             }
         }
     }

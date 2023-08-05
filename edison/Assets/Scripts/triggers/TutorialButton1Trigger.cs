@@ -43,9 +43,9 @@ namespace com.jonrummery.edison {
 
         IEnumerator HapticFeedback() {
             // set haptics on and off
-            OVRInput.SetControllerVibration(hapticFrequency, hapticAmplitude, OVRInput.Controller.LTouch);
+            OVRInput.SetControllerVibration(hapticFrequency, hapticAmplitude, OVRInput.Controller.RTouch);
             yield return new WaitForSeconds(0.1f);
-            OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.LTouch);
+            OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.RTouch);
         }
     }
 }

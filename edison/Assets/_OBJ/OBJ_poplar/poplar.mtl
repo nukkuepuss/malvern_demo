@@ -1,0 +1,22 @@
+# Blender 3.6.0 MTL File: 'None'
+# www.blender.org
+
+newmtl M_Poplar_leaves
+Ns 20.000006
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+illum 1
+map_Kd T_Poplar_leaves_BC.tga
+map_d T_Poplar_leaves_BC.tga
+
+newmtl M_Poplar_trunk
+Ns 20.000006
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd T_Poplar_trunk_06_BC.tga
