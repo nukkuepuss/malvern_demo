@@ -16,17 +16,27 @@ namespace com.jonrummery.edison {
         bool _triesToConnectToMaster = false;
         bool _triesToConnectToRoom = false;
 
+        bool _hasClickedToStart = false;
+
         private void Update() {
 
-            if (!PhotonNetwork.IsConnected && !_triesToConnectToMaster) {
+            if (_hasClickedToStart) {
 
-                ConnectToMaster();
+                if (!PhotonNetwork.IsConnected && !_triesToConnectToMaster) {
+
+                    ConnectToMaster();
+                }
+
+                if (PhotonNetwork.IsConnected && !_triesToConnectToMaster && !_triesToConnectToRoom) {
+
+                    StartCoroutine(WaitFrameAndConnect());
+                }
             }
+        }
 
-            if (PhotonNetwork.IsConnected && !_triesToConnectToMaster && !_triesToConnectToRoom) {
+        public void StartNetworking() {
 
-                StartCoroutine(WaitFrameAndConnect());
-            }
+            _hasClickedToStart = true;
         }
 
         public void ConnectToMaster() {

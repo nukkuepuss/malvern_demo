@@ -1,5 +1,6 @@
 ﻿/// <summary>
 /// handles the mainmap clipboard
+/// *** the stub extend/retract/morph code has got a bit out-of-control and needs tightening (but it works!)
 /// </summary>
 
 using System.Collections;
@@ -50,6 +51,13 @@ namespace com.jonrummery.edison {
 
                     _stubExtend = false;
                 }
+
+                // special case : the main map has been deactivated whilst the stub is extending
+                if (_mats[mainFringePos].color != Color.red) {
+
+                    _stubExtend = false;
+                    _stubRetract = true;
+                }
             }
 
             if (_stubRetract) {
@@ -59,10 +67,20 @@ namespace com.jonrummery.edison {
                 if (_destroyStubOnRetract && stub.transform.position == _originalStubPosition) {
 
                     world_stub.SetActive(false);
-                    main.SetActive(true);
                     DeactivateStubButton();
                     stub.SetActive(false);
                     _stubRetract = false;
+
+                    // this hack checks whether the main map should be showing or not when stub retracts
+                    if (_mats[mainFringePos].color == Color.red) {
+
+                        main.SetActive(true);
+                    }
+
+                    else {
+
+                        main.SetActive(false);
+                    }
                 }
             }
         }
