@@ -23,7 +23,14 @@ namespace com.jonrummery.edison {
 
         private void OnTriggerEnter(Collider other) {
 
-            if (other.tag=="bingo") {
+            // (1) is it the collider we're looking for? It's on the Quest PUN Template RHand in Resources.
+            if ((other.tag == "bingo") &&
+
+                // (2) is the right-hand middle-finger trigger held down?
+                ((OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger) == 1)) &&
+
+                // (3) finally, check the index finger trigger isn't held down...
+                (!OVRInput.Get(OVRInput.Touch.SecondaryIndexTrigger))) {
 
                 _mesh.material = onMat;
             }

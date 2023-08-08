@@ -52,6 +52,11 @@ namespace com.jonrummery.edison {
 
         void Start() {
 
+            if (MySharedData.hasCompletedTutorial) {
+
+                return;
+            }
+
             //set the user interface (wristband and clipboards)
             wristband.SetActive(false);
 
@@ -232,6 +237,8 @@ namespace com.jonrummery.edison {
             // update flag (0 = tutorial finished)
             _clip = 0;
 
+            // tutorial completed!
+            MySharedData.hasCompletedTutorial = true;
             wristband.SetActive(true);
         }
 

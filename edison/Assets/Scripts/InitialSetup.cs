@@ -46,12 +46,13 @@ namespace com.jonrummery.edison {
 
             if (_headset.ToString() == "Rift_CV1") {
 
-                playerRig.transform.localPosition += playerOffsetForCV1;
+                //playerRig.transform.position += playerOffsetForCV1;
+                playerRig.transform.Translate(playerOffsetForCV1, Space.World);
             }
 
             if (_headset.ToString() == "Oculus_Quest_2") {
 
-                playerRig.transform.localPosition += playerOffsetForQuest;
+                playerRig.transform.position += playerOffsetForQuest;
             }
         }
     }

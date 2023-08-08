@@ -18,7 +18,17 @@ namespace com.jonrummery.edison {
 
         private void OnTriggerEnter(Collider other) {
 
-            if (other.tag=="bingo" && SliderInRange()) {
+            // (1) is it the collider we're looking for? It's tagged 'bingo'.
+            if ((other.tag == "bingo") &&
+
+                // (2) is the right-hand middle-finger trigger held down?
+                ((OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger) == 1)) &&
+
+                    // (3) check the index finger trigger isn't held down (ie. we're pointing).
+                    (!OVRInput.Get(OVRInput.Touch.SecondaryIndexTrigger)) &&
+                        
+                        // (4) is the collider adjacent to the current slider position?
+                        SliderInRange()) {
 
                 MySharedData.windSliderPos = thisLevel;
 
@@ -29,7 +39,7 @@ namespace com.jonrummery.edison {
         bool SliderInRange() {
 
             // we only want to move the slider if it's adjacent to the current position
-            return((thisLevel==MySharedData.windSliderPos-2)||(thisLevel==MySharedData.windSliderPos+2)
+            return ((thisLevel == MySharedData.windSliderPos - 2) || (thisLevel == MySharedData.windSliderPos + 2)
                 || (thisLevel == MySharedData.windSliderPos - 1) || (thisLevel == MySharedData.windSliderPos + 1));
         }
     }

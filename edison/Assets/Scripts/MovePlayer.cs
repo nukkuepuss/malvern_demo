@@ -40,7 +40,7 @@ namespace com.jonrummery.edison {
         public bool _isSliding;
 
         //[HideInInspector]
-        //public bool isInControlsTutorial = false;
+        public bool isInControlsTutorial = true;
 
         private float _newYMoveSpeed;
 
@@ -95,13 +95,13 @@ namespace com.jonrummery.edison {
 
         void Update() {
 
-            // check if tutorial has been completed : no moving beforehand
+            // check if tutorial has been completed (no moving beforehand) and that a slider is being slid
             if (!inTutorial && !_isSliding) {
 
                 GetOVRInput();
 
                 // don't do anything if either action button is pressed
-                if (!_actionButton1 || !_actionButton2) {
+                if (!_actionButton1 && !_actionButton2) {
 
                     ProcessOVRInput();
                 }
@@ -178,19 +178,19 @@ namespace com.jonrummery.edison {
                 _newYMoveSpeed = moveSpeed;
 
                 // is Boost Mode enabled?
-                if (_boostTriggerInput > 0.1f) {
+                if (_boostTriggerInput != 0f) {
                     _newYMoveSpeed += (boostSpeed * _boostTriggerInput);
                 }
 
                 // is Superman Mode enabled?
                 // NB this value has been deprecated : boost and superman speeds are the same
-                if (_supermanTriggerInput > 0.1f) {
+                if (_supermanTriggerInput != 0f) {
                     _newYMoveSpeed += (boostSpeed * _supermanTriggerInput);
                 }
 
                 // is God Mode enabled?
                 if (_boostTriggerInput != 0f && _supermanTriggerInput != 0f) {
-                    _newYMoveSpeed = (boostSpeed * boostSpeed * _boostTriggerInput);
+                    _newYMoveSpeed += (boostSpeed * boostSpeed * _boostTriggerInput);
                 }
 
                 // move forward/backward relative to right hand's position

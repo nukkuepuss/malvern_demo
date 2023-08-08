@@ -19,6 +19,8 @@ TagManager:
   - pickup
   - clipboards
   - wristband
+  - blade
+  - portal
   layers:
   - Default
   - TransparentFX

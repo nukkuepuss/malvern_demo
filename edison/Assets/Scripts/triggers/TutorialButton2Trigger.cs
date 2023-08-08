@@ -71,6 +71,9 @@ namespace com.jonrummery.edison {
                 // set the flag
                 stillThere = false;
 
+                // reset the timer
+                StopCoroutine("WaitABit");
+
                 // reset arrow
                 ResetArrow();
 
