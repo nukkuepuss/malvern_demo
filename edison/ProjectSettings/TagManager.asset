@@ -21,6 +21,7 @@ TagManager:
   - wristband
   - blade
   - portal
+  - arrow_forward
   layers:
   - Default
   - TransparentFX
@@ -35,14 +36,14 @@ TagManager:
   - ovrgrabber
   - player_portal
   - portal
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - box
+  - sign
+  - exit
+  - clipboard
+  - PUNHandLeft
+  - PUNHandRight
+  - OVRLeft
+  - OVRRight
   - 
   - 
   - 

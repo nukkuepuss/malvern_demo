@@ -32,7 +32,8 @@ namespace com.jonrummery.edison {
 
                 MySharedData.windSliderPos = thisLevel;
 
-                slider.transform.localPosition = new Vector3(xPos, 0f, zPos);
+                // y-pos is y-pos of slider
+                slider.transform.localPosition = new Vector3(xPos, 0.005f, zPos);
             }
         }
 

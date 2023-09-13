@@ -1,4 +1,5 @@
 ﻿/// <summary>
+/// ClipMain.cs
 /// handles the mainmap clipboard
 /// *** the stub extend/retract/morph code has got a bit out-of-control and needs tightening (but it works!)
 /// </summary>
@@ -117,6 +118,7 @@ namespace com.jonrummery.edison {
                     DeactivateMainButton();
                     world_stub.SetActive(false);
                     _stubRetract = true;
+                    _destroyStubOnRetract = false;
                 }
 
                 // the stub is on it's own

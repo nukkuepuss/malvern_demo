@@ -56,6 +56,8 @@ namespace com.jonrummery.edison {
                     // note that the x-value of the sun Vector3 is transformed by the y-value of the thumbstick
                     // So; sun.transform.localEulerAngles += new Vector3((OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick).y / step), (OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick).x / step), 0f);
                     sun.transform.localEulerAngles += new Vector3(_moveY, _moveX, 0f);
+
+                    MySharedData.hasSunMoved = true;
                 }
 
                 // has the left stick been clicked with the action-button held down?
@@ -64,7 +66,13 @@ namespace com.jonrummery.edison {
                     // reset the sun
                     sun.transform.position = _originalSunPosition;
                     sun.transform.rotation = _originalSunRotation;
+
+                    MySharedData.hasSunMoved = true;
                 }
+            }
+            else {
+
+                MySharedData.hasSunMoved = false;
             }
         }
     }

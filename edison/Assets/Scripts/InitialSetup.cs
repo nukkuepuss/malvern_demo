@@ -1,7 +1,6 @@
 ﻿/// <summary>
 /// InitialSetup.cs
 /// fix timestep at 1/90 for Quest2
-/// adjust the player position when using CV1 (it's off by z:0.7 otherwise)
 /// initialize wristband and clipboard position
 /// </summary>
 
@@ -13,7 +12,12 @@ namespace com.jonrummery.edison {
 
     public class InitialSetup : MonoBehaviour {
 
+        public FadeScreen fadeScreen;
+
         public GameObject playerRig;
+
+        public Transform resetLoc;
+
         public Vector3 playerOffsetForCV1;
         public Vector3 playerOffsetForQuest;
 
@@ -22,11 +26,18 @@ namespace com.jonrummery.edison {
 
         private void Awake() {
 
+            // fade screen in
+            StartCoroutine(FadeTheScreen());
+
             // set Oculus Quest2 display frequency
             OVRManager.display.displayFrequency = 90f;
 
             // Quest and Rift place Player at different positions (don't know why), so adjust accordingly
-            HeadsetOffset();
+            //HeadsetOffset();
+
+            // snap the player to a starting position (same as the reset location)
+            playerRig.transform.position = resetLoc.transform.position;
+            playerRig.transform.rotation = resetLoc.transform.rotation;
 
             // attach the clipboards to the Player
             GameObject _clipboards = GameObject.FindGameObjectWithTag("clipboards");
@@ -39,21 +50,27 @@ namespace com.jonrummery.edison {
 
         }
 
-        void HeadsetOffset() {
+        IEnumerator FadeTheScreen() {
 
-            OVRPlugin.SystemHeadset _headset = OVRPlugin.GetSystemHeadsetType();
-            Debug.Log("Headset type : " + _headset);
-
-            if (_headset.ToString() == "Rift_CV1") {
-
-                //playerRig.transform.position += playerOffsetForCV1;
-                playerRig.transform.Translate(playerOffsetForCV1, Space.World);
-            }
-
-            if (_headset.ToString() == "Oculus_Quest_2") {
-
-                playerRig.transform.position += playerOffsetForQuest;
-            }
+            fadeScreen.FadeIn();
+            yield return new WaitForSeconds(fadeScreen.fadeDuration);
         }
+
+        //void HeadsetOffset() {
+
+            //OVRPlugin.SystemHeadset _headset = OVRPlugin.GetSystemHeadsetType();
+            //Debug.Log("Headset type : " + _headset);
+
+            //if (_headset.ToString() == "Rift_CV1") {
+
+            //    //playerRig.transform.position += playerOffsetForCV1;
+            //    playerRig.transform.Translate(playerOffsetForCV1, Space.World);
+            //}
+
+            //if (_headset.ToString() == "Oculus_Quest_2") {
+
+            //    playerRig.transform.position += playerOffsetForQuest;
+            //}
+        //}
     }
 }

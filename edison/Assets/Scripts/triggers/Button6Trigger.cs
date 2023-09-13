@@ -1,16 +1,22 @@
 ﻿/// <summary>
-/// reset button
+/// Button6Trigger.cs
+/// reset button - back to lobby
 /// player's finger must stay in trigger until arrow has completed full circle
-/// takes a transform to act as the reset location
+/// *** adapted from a locatio-based reset - old code still here
 /// </summary>
 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using Photon.Realtime;
+using Photon.Pun;
 
 namespace com.jonrummery.edison {
 
     public class Button6Trigger : MonoBehaviour {
+
+        public FadeScreen fadeScreen;
 
         public GameObject buttonBody;
         public GameObject buttonPic;
@@ -91,14 +97,29 @@ namespace com.jonrummery.edison {
 
             if (stillThere) {
 
-                // all conditions satisfied
-
                 // reset arrow
                 ResetArrow();
 
-                // move player
-                player.transform.position = playerResetLocation.transform.position;
+                // this is the button action : to reset the player back to the lobby
+                FadeToScene();
             }
+        }
+
+        public void FadeToScene() {
+
+            StartCoroutine(FadeToSceneRoutine());
+        }
+
+        IEnumerator FadeToSceneRoutine() {
+
+            fadeScreen.FadeOut();
+            yield return new WaitForSeconds(fadeScreen.fadeDuration);
+
+            // disconnect from PUN server
+            PhotonNetwork.Disconnect();
+
+            // load next scene
+            SceneManager.LoadScene(0);
         }
 
         void ResetArrow() {

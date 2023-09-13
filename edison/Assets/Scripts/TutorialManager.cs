@@ -75,7 +75,7 @@ namespace com.jonrummery.edison {
             clip3.SetActive(false);
             clip3GreenArrow.SetActive(false);
 
-            moveScript.inTutorial = true;
+            //moveScript.inTutorial = true;
         }
 
         private void Update() {
@@ -210,7 +210,7 @@ namespace com.jonrummery.edison {
             //OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.LTouch);
 
             // unfreeze Player
-            moveScript.inTutorial = false;
+            //moveScript.inTutorial = false;
         }
 
         // called from the green progress arrow trigger unlocked when Player has successfully performed a burn

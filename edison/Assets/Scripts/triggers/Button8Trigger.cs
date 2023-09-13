@@ -1,4 +1,5 @@
 ﻿/// <summary>
+/// Button8Trigger.cs
 /// b8 : egypt button
 /// player's finger must stay in trigger until arrow has completed full circle
 /// loads the egypt scene
@@ -12,6 +13,9 @@ using UnityEngine.SceneManagement;
 namespace com.jonrummery.edison {
 
     public class Button8Trigger : MonoBehaviour {
+
+        public FadeScreen fadeScreen;
+        //public int malvernBuildIndex;
 
         public int nextLevel;
         public Camera cam;
@@ -91,6 +95,8 @@ namespace com.jonrummery.edison {
             }
         }
 
+
+
         IEnumerator WaitABit() {
 
             yield return new WaitForSeconds(hapticDelay);
@@ -103,11 +109,27 @@ namespace com.jonrummery.edison {
                 ResetArrow();
 
                 // hide all objects (Unity makes the Oculus display all janky when changing scenes)
-                cam.cullingMask = (1 << LayerMask.NameToLayer("Nothing"));
+                //cam.cullingMask = (1 << LayerMask.NameToLayer("Nothing"));
+
+                // load Egypt scene with fade
+                FadeToScene();
 
                 //load main scene (see Build Settings)
-                SceneManager.LoadScene(nextLevel);
+                //SceneManager.LoadScene(nextLevel);
             }
+        }
+
+        public void FadeToScene() {
+
+            StartCoroutine(FadeToSceneRoutine());
+        }
+
+        IEnumerator FadeToSceneRoutine() {
+
+            fadeScreen.FadeOut();
+            yield return new WaitForSeconds(fadeScreen.fadeDuration);
+
+            SceneManager.LoadScene(nextLevel);
         }
 
         void ResetArrow() {

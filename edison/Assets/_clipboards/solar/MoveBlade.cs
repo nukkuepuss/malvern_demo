@@ -19,6 +19,7 @@ namespace com.jonrummery.edison {
 
             _rb = GetComponent<Rigidbody>();
 
+            // calculate a random factor so that the turbines aren't all spinning at the same speed
             _randomFactor = Random.Range(0.7f, 1.6f);
 
             Debug.Log("Random = " + _randomFactor);
@@ -26,7 +27,7 @@ namespace com.jonrummery.edison {
 
         private void Update() {
 
-            // calculate a random speed based on wind speed slider
+            // calculate speed based on wind speed slider
             _speed = ((MySharedData.windSliderPos / 2) * _randomFactor);
 
             // move the 'x' value due to Blender import nonsense

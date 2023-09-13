@@ -1,4 +1,5 @@
 ﻿/// <summary>
+/// ClipMainMapTrigger.cs
 /// mainmap trigger on main clipboard
 /// </summary>
 

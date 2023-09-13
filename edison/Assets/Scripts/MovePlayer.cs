@@ -15,7 +15,6 @@ namespace com.jonrummery.edison {
 
         public GameObject playerPivot;
         private GameObject _cam;
-        //public GameObject tracking;
 
         [Tooltip("Lower the value for movement along stick y-axis to register when close to x-axis")]
         [Range(0, 1)]
@@ -24,9 +23,6 @@ namespace com.jonrummery.edison {
         [Header("Speed (right-stick up/down + left/right)")]
         public int moveSpeed;
 
-        //[Header("Strafe speed (right-stick left/right)")]
-        //public int moveXSpeed;
-
         [Header("Rotation speed (left-stick left/right")]
         public int rotationSpeed;
 
@@ -34,13 +30,8 @@ namespace com.jonrummery.edison {
         [Range(0, 10)]
         public int boostSpeed;
 
-        public bool inTutorial;
-
         [HideInInspector]
         public bool _isSliding;
-
-        //[HideInInspector]
-        public bool isInControlsTutorial = true;
 
         private float _newYMoveSpeed;
 
@@ -90,13 +81,12 @@ namespace com.jonrummery.edison {
             // set the snap values
             _snapLeftSpeed = -rotationSpeed;
             _snapRightSpeed = rotationSpeed;
-
         }
 
         void Update() {
 
-            // check if tutorial has been completed (no moving beforehand) and that a slider is being slid
-            if (!inTutorial && !_isSliding) {
+            // check that a slider is being slid
+            if (!_isSliding) {
 
                 GetOVRInput();
 

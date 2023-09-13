@@ -1,4 +1,5 @@
 ﻿/// <summary>
+/// ClipMainStubTrigger.cs
 /// cross-section trigger on main clipboard
 /// </summary>
 

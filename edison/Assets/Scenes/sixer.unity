@@ -4040,8 +4040,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fb7b420412c40244bbfed1f0aaa56e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeScreen: {fileID: 0}
   nextLevel: 1
-  cam: {fileID: 7391973090432913998}
 --- !u!65 &643271858
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4650,6 +4650,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4b5a0e611846404f92ccb425e0d8549, type: 3}
+--- !u!4 &735073435 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1969029967039829177, guid: c4b5a0e611846404f92ccb425e0d8549,
+    type: 3}
+  m_PrefabInstance: {fileID: 735073434}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &738724786
 GameObject:
   m_ObjectHideFlags: 0
@@ -6657,6 +6663,87 @@ MonoBehaviour:
   _isGrabbing: 0
   otherHand: {fileID: 1251274469}
   trackingSpace: {fileID: 7391973090432913448}
+--- !u!1001 &1147305403
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 735073435}
+    m_Modifications:
+    - target: {fileID: 5879802130571230609, guid: 5fe05d0ec0e31254db5d6f622dedeb66,
+        type: 3}
+      propertyPath: m_Name
+      value: FaderScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 5879802130571230610, guid: 5fe05d0ec0e31254db5d6f622dedeb66,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5879802130571230610, guid: 5fe05d0ec0e31254db5d6f622dedeb66,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5879802130571230610, guid: 5fe05d0ec0e31254db5d6f622dedeb66,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5879802130571230610, guid: 5fe05d0ec0e31254db5d6f622dedeb66,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5879802130571230610, guid: 5fe05d0ec0e31254db5d6f622dedeb66,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5879802130571230610, guid: 5fe05d0ec0e31254db5d6f622dedeb66,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5879802130571230610, guid: 5fe05d0ec0e31254db5d6f622dedeb66,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5879802130571230610, guid: 5fe05d0ec0e31254db5d6f622dedeb66,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5879802130571230610, guid: 5fe05d0ec0e31254db5d6f622dedeb66,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5879802130571230610, guid: 5fe05d0ec0e31254db5d6f622dedeb66,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5879802130571230610, guid: 5fe05d0ec0e31254db5d6f622dedeb66,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5fe05d0ec0e31254db5d6f622dedeb66, type: 3}
+--- !u!114 &1147305404 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5879802130571230613, guid: 5fe05d0ec0e31254db5d6f622dedeb66,
+    type: 3}
+  m_PrefabInstance: {fileID: 1147305403}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f17d4b54bc8d48e4f896263c2b39b3c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1149080387
 GameObject:
   m_ObjectHideFlags: 0
@@ -14408,8 +14495,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fb7b420412c40244bbfed1f0aaa56e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeScreen: {fileID: 1147305404}
   nextLevel: 1
-  cam: {fileID: 7391973090432913998}
 --- !u!54 &1827101529
 Rigidbody:
   m_ObjectHideFlags: 0
