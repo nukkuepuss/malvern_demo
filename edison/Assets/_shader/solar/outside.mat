@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Albedo:
-        m_Texture: {fileID: 2800000, guid: c875c79a58837cb458c7031f3c0a49eb, type: 3}
+        m_Texture: {fileID: 2800000, guid: c3f249cc9fab8cd41b0d0330695d110f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -40,7 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Emission:
-        m_Texture: {fileID: 2800000, guid: 848f6a8af2a0c254f83482caa946c7d1, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3d27000a9acc9634cae420faa7637d36, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -72,7 +72,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ScrollingMask:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 201aea5c6d0d8fd43a2277a67858b456, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -80,9 +80,9 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _EmissionGlow: 2.26
-    - _EmissionGlowDuration: 3.37
-    - _EmissionIntensity: 0.01
+    - _EmissionGlow: 460
+    - _EmissionGlowDuration: 2.57
+    - _EmissionIntensity: 300
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -90,7 +90,7 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _ScrollX: 0
+    - _ScrollX: -0.02
     - _ScrollY: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -98,5 +98,5 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0.3301887, g: 0.20870417, b: 0.20870417, a: 1}
+    - _Color: {r: 1, g: 0.6462362, b: 0, a: 0.972549}
+    - _EmissionColor: {r: 0.056603767, g: 0.055131614, b: 0.036845863, a: 1}

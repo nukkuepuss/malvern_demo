@@ -37,7 +37,7 @@ namespace com.jonrummery.edison {
             _numberofModels = models.Length;
 
             // initalize models and button states
-            ActivateEx1();
+            DeactivateEx1();
             DeactivatePlanetarium();
             DeactivateMinimap();
         }
