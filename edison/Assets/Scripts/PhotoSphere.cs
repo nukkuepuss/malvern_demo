@@ -8,6 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace com.jonrummery.edison {
 
@@ -28,7 +29,7 @@ namespace com.jonrummery.edison {
         private int _originalMask;
 
         // metadata
-        public Text display;
+        public TextMeshPro display;
         public string metaData;
 
         // 360 indicator

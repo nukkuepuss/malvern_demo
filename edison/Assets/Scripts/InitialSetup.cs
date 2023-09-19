@@ -1,7 +1,8 @@
 ﻿/// <summary>
 /// InitialSetup.cs
 /// fix timestep at 1/90 for Quest2
-/// initialize wristband and clipboard position
+/// initialize wristband, clipboard position
+/// show peachfields stage1 buildings+solar
 /// </summary>
 
 using System.Collections;
@@ -23,6 +24,8 @@ namespace com.jonrummery.edison {
 
         public GameObject clipboards;
         public GameObject wristband;
+
+        public ClipSolarManager solarScript;
 
         private void Awake() {
 
@@ -47,6 +50,9 @@ namespace com.jonrummery.edison {
             GameObject _wristband = GameObject.FindGameObjectWithTag("wristband");
             wristband.transform.SetParent(_wristband.transform, false);
             wristband.SetActive(true);
+
+            // show solar p1
+            solarScript.p1Trigger();
 
         }
 

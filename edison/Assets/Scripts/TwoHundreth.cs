@@ -15,12 +15,12 @@ namespace com.jonrummery.edison {
         public GameObject world, buildings, ways;
         public GameObject p1, p2, p3, p4;
 
-        public GameObject world200, buildings200, ways200;
+        public GameObject world200, worldStub, buildings200, ways200;
         public GameObject p1mini, p2mini, p3mini, p4mini;
 
         void Update() {
 
-            world200.SetActive(world.activeSelf);
+            world200.SetActive(world.activeSelf || worldStub.activeSelf);
             buildings200.SetActive(buildings.activeSelf);
             ways200.SetActive(ways.activeSelf);
             p1mini.SetActive(p1.activeSelf);

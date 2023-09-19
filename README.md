@@ -6,6 +6,10 @@ Walk, talk and interact within a 1:1 scale immersive recreation of the Malvern H
 
 5km2 real-world 1:1 landscape to explore
 
+Full head+hands+speech networking (free for <=20 CCU)
+
+Tutorial
+
 Geological cross-section visualisation
 
 Solar/wind energy transition scheme
@@ -14,7 +18,7 @@ Modular eco-house
 
 Hillfort
 
-Exhibition
+Exhibition with video wall
 
 Planetarium
 
@@ -24,7 +28,11 @@ Sea level rise/fall
 
 100's of buildings + all roads/paths mapped
 
-Full head+hands+speech networking (for <=20 CCU)
+Balloon ride
 
-360 photosphere locations
+Controls schema
+
+Picture gallery
+
+360 photosphere location
 

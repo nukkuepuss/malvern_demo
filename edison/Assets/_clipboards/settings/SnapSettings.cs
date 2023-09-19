@@ -1,6 +1,7 @@
 ﻿/// <summary>
 /// SnapSettings.cs
 /// two buttons... one setting (snap/smooth rotation)
+/// + init clipboard
 /// </summary>
 
 using System.Collections;

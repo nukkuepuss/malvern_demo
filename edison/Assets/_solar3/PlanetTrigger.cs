@@ -48,7 +48,7 @@ namespace com.jonrummery.edison {
 
             if (_isMoving) {
 
-                transform.RotateAround(sun.transform.localPosition, Vector3.up, angularVelocity * Time.deltaTime);
+                transform.RotateAround(sun.transform.position, Vector3.up, angularVelocity * Time.deltaTime);
 
                 this.transform.RotateAround(this.transform.position, Vector3.up, rotationSpeed * Time.deltaTime);
             }
